@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Angular UI</title>
+	<style>
+		.slct{
+			width:300px;
+		}
+	</style>
+	<link rel="stylesheet" href="public/lib/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="public/lib/angular-ui-select/dist/select.min.css">
+		
+	<script src='public/lib/jquery/dist/jquery.min.js'></script>
+	<script src='public/lib/angular/angular.min.js'></script>
+ 	<script src='public/lib/angular-ui-select/dist/select.min.js'></script>
+	<script src='app.js'></script>
+    	
+</head>
+<body ng-controller='MainController'>
+	<ui-select ng-model="employee.selected" theme="bootstrap" class="slct" reset-search-input="false">
+		<ui-select-match placeholder="Enter a name">
+			{{$select.selected.name}}
+		</ui-select-match>
+		
+		<ui-select-choices repeat="e in employees|filter:$select.search">
+			{{e.name}}( {{e.email}})
+			
+		</ui-select-choices>
+	</ui-select>
+</body>
+</html>
